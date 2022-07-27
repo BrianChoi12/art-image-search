@@ -4,13 +4,14 @@ from functools import partial
 from multiprocessing.pool import ThreadPool
 from pathlib import Path
 from urllib.request import urlretrieve
+from wikiart.wikiart.console import main
 
 import pandas as pd
 
 
 DOWNLOAD_URL = "https://unsplash-datasets.s3.amazonaws.com/lite/latest/unsplash-research-dataset-lite-latest.zip"
-DATASET_PATH = Path(__file__).resolve().parents[1] / "unsplash-dataset"
-DOWNLOADED_PHOTOS_PATH = DATASET_PATH / "photos"
+DATASET_PATH = Path(__file__).resolve().parents[1] / "wikiart"
+DOWNLOADED_PHOTOS_PATH = DATASET_PATH / "data"
 DOWNLOADED_PHOTOS_PATH.mkdir(parents=True, exist_ok=True)
 
 
@@ -33,6 +34,7 @@ def setup_parser():
 
 
 def main():
+    """
     parser = setup_parser()
     args = parser.parse_args()
 
@@ -49,6 +51,7 @@ def main():
     pool = ThreadPool(args.threads_count)
     pool.map(partial(download_photo, args.image_width), photos)
     print("Photo downloading finished!")
+    """
 
 
 if __name__ == "__main__":
